@@ -12,7 +12,11 @@
         <li>Become better</li>
         <li>Now</li>
         <li>Never</li>
-        <li> <%= NewItem %> </li>
+        
+        <% for ( i of NewItem  ) { %>
+            <li>  <%= i %> </li> 
+        <% } %>
+        <!--li> <%= NewItem %> </li-->
     </ul>
     <form action="/" method="POST">
         <label for="action">Enter To do</label>

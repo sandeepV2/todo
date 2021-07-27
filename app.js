@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-var action = "";
+var actions = [];
 
 app.listen(3000, function (req, res) {
     console.log("Server starting listnening on 3000");
@@ -30,7 +30,7 @@ app.get("/", function (req, res) {
     var day = currentDay;
     console.log(day);
 
-    res.render("list", {kindOfDay:day , NewItem:action });
+    res.render("list", {kindOfDay:day , NewItem:actions });
     // if (currentDay == 6 || currentDay == 0) {
     //     res.render("list", {
     //         kindOfDay: day + " Weekend"
@@ -48,9 +48,10 @@ app.get("/", function (req, res) {
 // we cannot have multiple sendFile.
 
 app.post("/", (req, res)=>{
-    action = req.body.actionItem;
+    var action = req.body.actionItem;
+    actions.push(action);
     // We may try to render here but the scope of
     //action item and kindOfDay wont be as expected.
     //res.render('list', {NewItem : actionItem});
-    res.redirect("/")
+    res.redirect("/");
 });

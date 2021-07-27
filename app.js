@@ -11,8 +11,9 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(express.static("public"));
 
-var actions = [];
+var actions = ["Become better", "Now or Never"];
 
 app.listen(3000, function (req, res) {
     console.log("Server starting listnening on 3000");

@@ -3,7 +3,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs")
-
+const dayModule = require(__dirname + "/day.js")
 
 const app = express();
 // set view engine to ejs.
@@ -21,15 +21,7 @@ app.listen(3000, function (req, res) {
 });
 
 app.get("/", function (req, res) {
-    var options = {
-        "weekday" : 'long',
-        "month" : 'long',
-        "day" : "numeric"
-    }
-    var today = new Date();
-    let currentDay = today.toLocaleDateString("en-US", options);
-    //const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    var day = currentDay;
+    let day = dayModule.getDate();
     console.log(day);
 
     res.render("list", {listTitle:day , NewItem:actions });

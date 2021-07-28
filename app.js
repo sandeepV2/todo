@@ -39,6 +39,9 @@ app.get("/", function (req, res) {
     //res.send();
 });
 
+app.get("/test", (req, res)=>{
+    res.render("test");
+})
 // we cannot have multiple sendFile.
 
 app.post("/", (req, res)=>{
